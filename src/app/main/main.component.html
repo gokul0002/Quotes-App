@@ -1,0 +1,42 @@
+
+<div class="wholeBody">
+
+<div class="header" [style.background-color]="themeColor" >
+    <div class="content" [style.color]="txtColor" >
+      Quotes for you!
+    </div>
+  </div>
+  
+  <div class="mainDiv" [style.background-image]="bgImage"  >
+  
+      <div #quotesDiv class="quotesDiv" [style.color]="txtColor" style="display: flex; justify-content: center; margin-top: 85px;" *ngIf="! showQuotes">
+          Choose Your Quotes!     
+      </div>
+  
+      <div #quotesDiv class="quotesDiv" [style.color]="txtColor" *ngIf="showQuotes" [style.marginLeft]="marginLeft"  >
+          {{showQuotes}} 
+      </div>
+  
+   
+  </div>
+  
+  
+  <div class="swiper-container">
+    <div class="swiper-wrapper" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+      <div class="swiper-slide" *ngFor="let q of quotesBtnArr">
+        <button class="Buttons" (click)="showQuote(q)" [style.background-color]="themeColor" [style.color]="txtColor" >{{ q }}</button>
+      </div>
+    </div>
+    <button [style.background-color]="themeColor" class="swiper-button prev"  (click)="prevSlide()" >&#10094;</button>
+    <button [style.background-color]="themeColor" class="swiper-button next" (click)="nextSlide()">&#10095;</button>
+  </div>
+
+
+  <div style="height: 280px;background-color: beige;">
+
+    <img [src]="quoteImage" class="imgDiv" alt="">
+
+  </div>
+   
+
+</div>
